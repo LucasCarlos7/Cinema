@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <title>Gerenciamento de Filme</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Gerenciamento de Filmes</h1>
+            <hr>
+            <h2>Adicionar</h2>
+            <form action="#" th:action="@{/salvarFilme}" th:object="${filme}" method="POST">
+                <input type="text" th:field="*{titulo}" placeholder="Insira o título" class="form-control mt-4 col-4">
+                <span class="text-danger" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></span> 
+                <input type="text" th:field="*{sinopse}" placeholder="Insira a sinopse" class="form-control mt-4 col-4"> 
+                <span class="text-danger" th:if="${#fields.hasErrors('sinopse')}" th:errors="*{sinopse}"></span> 
+                <input type="text" th:field="*{genero}" placeholder="Insira o gênero" class="form-control mt-4 col-4"> 
+                <span class="text-danger" th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></span> 
+                <input type="text" th:field="*{AnoLancamento}" placeholder="Insira o ano de lançamento" class="form-control mt-4 col-4"> 
+                <span class="text-danger" th:if="${#fields.hasErrors('AnoLancamento')}" th:errors="*{AnoLancamento}"></span>
+                <button type="submit" class="btn btn-info mt-4"> Salvar</button> 
+            </form>
+        </div>
+    </body>
+</html>

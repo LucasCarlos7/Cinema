@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Detalhe do Filme</title>
+    </head>
+    <body>
+        <h1>Detalhe do Filme</h1>
+        <h2 th:text="${filme.titulo}"></h2>
+        <p><strong>Sinopse:</strong> <span th:text="${filme.sinopse}"></span></p>
+        <p><strong>Gênero:</strong> <span th:text="${filme.genero}"></span></p>
+        <p><strong>Ano:</strong> <span th:text="${filme.AnoLancamento}"></span></p>
+
+        <h3>Análises</h3>
+        <ul>
+            <li th:each="analise : ${filme.analises}">
+                <p><strong>Análise:</strong> <span th:text="${analise.analise}"></span></p>
+                <p><strong>Nota:</strong> <span th:text="${analise.nota}"></span></p>
+            </li>
+        </ul>
+
+        <h3>Adicionar Análise</h3>
+        <form th:action="@{/{id}/analisar(id=${filme.id})}" th:object="${analise}" method="POST">
+            <p>Análise: <textarea th:field="*{analise}"></textarea></p>
+            <p>Nota: <input type="number" th:field="*{nota}" min="0" max="10"/></p>
+            <p><input type="submit" value="Analisar"/></p>
+        </form>
+
+        <a href="/">Voltar para a lista de filmes</a>
+
+    </body>
+</html>
