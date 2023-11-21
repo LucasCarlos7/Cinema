@@ -16,7 +16,7 @@ public class AnaliseEntity {
     @Id
     @GeneratedValue
     private Long id;
-    private String analise;
+    private String textoAnalise;
     private Integer nota;
     
     @ManyToOne

@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>Detalhe do Filme</title>
-    </head>
-    <body>
-        <h1>Detalhe do Filme</h1>
-        <h2 th:text="${filme.titulo}"></h2>
-        <p><strong>Sinopse:</strong> <span th:text="${filme.sinopse}"></span></p>
-        <p><strong>Gênero:</strong> <span th:text="${filme.genero}"></span></p>
-        <p><strong>Ano:</strong> <span th:text="${filme.AnoLancamento}"></span></p>
 
-        <h3>Análises</h3>
-        <ul>
-            <li th:each="analise : ${filme.analises}">
-                <p><strong>Análise:</strong> <span th:text="${analise.analise}"></span></p>
-                <p><strong>Nota:</strong> <span th:text="${analise.nota}"></span></p>
-            </li>
-        </ul>
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhe do Filme</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
 
-        <h3>Adicionar Análise</h3>
-        <form th:action="@{/{id}/analisar(id=${filme.id})}" th:object="${analise}" method="POST">
-            <p>Análise: <textarea th:field="*{analise}"></textarea></p>
-            <p>Nota: <input type="number" th:field="*{nota}" min="0" max="10"/></p>
-            <p><input type="submit" value="Analisar"/></p>
-        </form>
+<body>
+    <h1>Detalhe do Filme</h1>
+    <h2 th:text="${filme.titulo}"></h2>
+    <p><strong>Sinopse:</strong> <span th:text="${filme.sinopse}"></span></p>
+    <p><strong>Gênero:</strong> <span th:text="${filme.genero}"></span></p>
+    <p><strong>Ano:</strong> <span th:text="${filme.AnoLancamento}"></span></p>
 
-        <a href="/">Voltar para a lista de filmes</a>
+    <h3>Análises</h3>
+    <table class="table table-striped table-responsive-md">
+        <tr th:each="analise : ${listarAnalises}">
+            <td>Análise:</td> <span th:text="${analise.textoAnalise}"/>
+            <td>Nota:</td> <span th:text="${analise.nota}"/>
+        </tr>
+    </table>
 
-    </body>
+    <h3>Adicionar Análise</h3>
+    <form action="#" th:action="@{{id}/analisar(id=${filme.id})}" th:object="${analise}" method="POST">
+        <p>Análise: <textarea th:field="*{textoAnalise}"></textarea></p>
+        <p>Nota: <input type="number" th:field="*{nota}" min="0" max="10" /></p>
+        <button type="submit" class="btn btn-info mt-4">Analisar</button>
+    </form>
+
+    <a href="/">Voltar para a lista de filmes</a>
+
+</body>
+
 </html>

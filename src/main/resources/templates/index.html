@@ -29,7 +29,7 @@
                         <td th:text="${filme.genero}"></td>
                         <td th:text="${filme.AnoLancamento}"></td>
                         <td> <a th:href="@{/atualizarFilmeForm/{id}(id=${filme.id})}" class="btn btn-primary">Atualizar</a>
-                            <a th:href="@{/{id}(id=${filme.id})}" class="btn btn-primary">Analisar</a>
+                             <a th:href="@{/{id}(id=${filme.id})}" class="btn btn-primary">Analisar<a>
                              <a th:href="@{/deletarFilme/{id}(id=${filme.id})}" class="btn btn-danger">Excluir</a>
                         </td>
                     </tr>

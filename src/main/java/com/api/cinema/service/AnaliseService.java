@@ -26,7 +26,7 @@ public class AnaliseService {
     public AnaliseEntity atualizarAnalise(Long id, AnaliseEntity analiseAtualizada) {
         AnaliseEntity analiseExistente = analiseRepository.findById(id).orElse(null);
         if (analiseExistente != null) {
-            analiseExistente.setAnalise(analiseAtualizada.getAnalise());
+            analiseExistente.setTextoAnalise(analiseAtualizada.getTextoAnalise());
             analiseExistente.setNota(analiseAtualizada.getNota());
             return analiseRepository.save(analiseExistente);
         }
